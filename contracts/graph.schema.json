@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agents.atlas-si.com/contracts/v1/graph.schema.json",
+  "title": "Atlas GraphPayload v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generatedAt", "nodes", "links", "unresolved"],
+  "properties": {
+    "version": {"const": 1},
+    "generatedAt": {"type": "string", "format": "date-time"},
+    "nodes": {"type": "array", "items": {"$ref": "#/$defs/node"}},
+    "links": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["source", "target", "type"], "properties": {"source": {"type": "string", "minLength": 1}, "target": {"type": "string", "minLength": 1}, "type": {"const": "wikilink"}}}},
+    "unresolved": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["source", "target"], "properties": {"source": {"type": "string"}, "target": {"type": "string"}}}}
+  },
+  "$defs": {
+    "node": {"type": "object", "additionalProperties": false, "required": ["id", "path", "label", "kind", "tags", "frontmatter"], "properties": {"id": {"type": "string", "minLength": 1}, "path": {"type": "string", "pattern": "^[^\\\\]+\\.md$"}, "label": {"type": "string"}, "kind": {"enum": ["agent", "soul", "memory", "lead", "project", "note"]}, "division": {"type": "string"}, "tags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}, "frontmatter": {"type": "object"}}}
+  }
+}

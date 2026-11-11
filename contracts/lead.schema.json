@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agents.atlas-si.com/contracts/v1/lead.schema.json",
+  "title": "Atlas CRM lead frontmatter v1",
+  "type": "object",
+  "required": ["status", "value", "currency", "owner_agent", "next_action"],
+  "properties": {
+    "status": {"enum": ["new", "qualified", "proposal", "won", "lost"]},
+    "value": {"type": "number", "minimum": 0},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "owner_agent": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "next_action": {"type": "string", "minLength": 1}
+  }
+}

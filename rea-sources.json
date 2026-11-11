@@ -1,0 +1,34 @@
+[
+  {
+    "name": "rea",
+    "sha": "2b1f72522134bb88486715e669d219b311c4ad93"
+  },
+  {
+    "name": "agency-agents",
+    "sha": "8ae6164602c95ca78828b148b9052460ee426885"
+  },
+  {
+    "name": "agency-agents-app",
+    "sha": "fdab206071bca40e56bf90c717ad612a5d154c70"
+  },
+  {
+    "name": "hermes-agent",
+    "sha": "60f81635c28e825a233f7bb25ed93a2579d5b547"
+  },
+  {
+    "name": "openclaw",
+    "sha": "1b62c4db9045ae3e353074eacbce4fba61a12d93"
+  },
+  {
+    "name": "gbrain",
+    "sha": "747dc24cc17608968aa34cf425129773ced4547b"
+  },
+  {
+    "name": "claw3d",
+    "sha": "51337f7f250459af61a7cf92b7b0015d59faed5c"
+  },
+  {
+    "name": "openbot",
+    "sha": "6c9d261448140a98406c4de80d02fdec2e25658c"
+  }
+]
