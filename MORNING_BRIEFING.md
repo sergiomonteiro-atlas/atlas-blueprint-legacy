@@ -1,52 +1,54 @@
 # MORNING BRIEFING — Atlas-Agent OS
+Data: 11/11/2026. **Quatro repositórios publicados e CI aprovado. Homologação visual ainda pendente.**
 
-Data:11/11/2026. **Quatro repositórios publicados; falta fechar a homologação visual e confirmar o último resultado Rust.**
+## Entregas verificadas
+| Repositório | Implementação e validação |
+| --- | --- |
+| atlas-blueprint | Especificações, contratos JSON, fontes, auditoria e três summaries canónicos do REA. Cinco testes de contratos aprovados. |
+| atlas-workforce | 288 agentes, 19 divisões, 19 ferramentas, cinco especialistas AtlasHub, Souls e starter Vault. Quinze testes aprovados e seis pipelines remotos verdes. Foram geradas 5.472 conversões. |
+| atlas-agent | Harness Builder/Auditor, CLI, identidade, indexador Markdown, pesquisa lexical e embeddings opcionais, gateway e HTTP/WebSocket. Onze testes aprovados sem skips; CI verde no commit 27f868cd404ffd42349fb036ebe45522874824df. |
+| atlas-desktop | Tauri 2/Svelte 5, Galaxy 3D, Command 3D, Vault, CRM e landing /atlas. npm ci/check/test/build e cargo check/test aprovados no commit d2eb333307aacc3f495b83d6d677d0b369a448f7. |
 
-## Estado verificado
-| Repositório | Entrega | Verificação |
-| --- | --- | --- |
-| atlas-blueprint | Especificações,schemas,registo de fontes,auditoria,evidência REA e este briefing | Cinco testes de contratos passaram; CI anterior verde |
-| atlas-workforce | 288 agentes,19 divisões,19 ferramentas,AtlasHub5,Souls,Vault com três leads fictícios | Quinze testes;seis pipelines remotos verdes no commit b1edbbfae63e3ddbb34064eafe6b65594b0d21ab;5472 conversões geradas |
-| atlas-agent | Harness Builder/Auditor,CLI,identidades,indexador lexical/embeddings opcionais,gateway,HTTP/WS | Onze testes passaram sem skips;CI verde em27f868cd404ffd42349fb036ebe45522874824df |
-| atlas-desktop | Tauri2/Svelte5,Galaxy3D,Command3D,Vault,CRM,landing /atlas | Candidatod2eb333307aacc3f495b83d6d677d0b369a448f7:npm ci/check/test/build e cargo check verdes;cargo test ainda em execução |
+[CI final Desktop](https://github.com/sergiomonteiro-atlas/atlas-desktop/actions/runs/43072216973).
 
-CI Desktop:[run43072216973](https://github.com/sergiomonteiro-atlas/atlas-desktop/actions/runs/43072216973).
+A integração do runtime com o starter Vault produziu 17 nós, 58 ligações, cinco especialistas e cinco Souls carregadas, três leads fictícios e nenhuma ligação por resolver.
 
-## O que foi corrigido nesta continuação
-- Publicados todos os637ficheiros iniciais do Desktop,incluindo87recursos binários.
-- Instalação local reposta;svelte-check anteriormente passou com zero erros e zero avisos;build e cinco testes iniciais passaram.
-- Runtime agora revalida capacidade depois da leitura do corpo HTTP;regressão com pedidos simultâneos passou.
-- Diagnóstico autenticado de indexação parcial e avisos CLI;ATLAS_VAULT_PATH reconhecido antes do alias ATLAS_VAULT.
-- Interface mostra avisos de índice parcial,limpa-os após leitura saudável e preserva o grafo utilizável. Oito testes de interface passaram.
-- Ligação do ícone Orbit da divisão AtlasHub;contagens de fixtures nativas ajustadas a288/19/66 e comparações de caminhos Windows corrigidas com PathBuf.
-- Primeiro cargo check passou;primeira suite nativa teve294pass,5fail,1ignored. Todos os testes novos do Vault passaram. Os cinco problemas foram corrigidos;aguarda-se o rerun final.
+## Correções auditadas
+- O runtime revalida a capacidade concorrente depois de ler o corpo HTTP. Um teste com pedidos simultâneos comprova o limite.
+- A API autenticada e o CLI mostram diagnósticos de indexação parcial. A interface preserva grafos utilizáveis e mostra avisos de cobertura.
+- ATLAS_VAULT_PATH tem precedência sobre o alias ATLAS_VAULT.
+- Foram corrigidos o ícone Orbit, as contagens dos fixtures e comparações de caminhos Windows.
+- Foram removidas apenas 15 cópias antigas do bundle, identificadas por comparação com os 288 ficheiros canónicos do Workforce. As asserções dos testes foram preservadas.
+- Assinatura e updater herdados não são autoridades de confiança Atlas. GitHub OAuth precisa de um client ID Atlas para ativação.
 
-## REA:utilização real e limites
-Foi usado o motor oficial rea-agents6.8.0 e a metodologia/documentação do morluto/rea. O trabalho combina adaptação das bases Agency Agents e código original Atlas;**não foi reconstruído tudo através do motor nem obtida paridade integral com Hermes/OpenClaw/gbrain/OpenBot/Claw3D**.
+## REA: utilização efetiva
+Foi utilizado o motor oficial rea-agents 6.8.0, com documentação e metodologia do morluto/rea. Houve adaptação das bases Agency Agents e implementação original Atlas. **Não foi reconstruído integralmente cada motor upstream através do REA, nem demonstrada compatibilidade total com Hermes, OpenClaw, gbrain, OpenBot ou Claw3D.**
 
-Três execuções estáticas documentadas em[ENGINE-RUNS.md](rea/ENGINE-RUNS.md):
-1.Referência Desktop API:1ficheiro de código selecionado,434nós AST,28findings,zero falhas de parsing.
-2.Runtime Atlas compilado:3módulos,4468nós AST,41findings,zero falhas de parsing.
-3.Console e landing compiladas:2bundles,197684nós AST,299findings,zero falhas de parsing;limite semântico de aliases512.
+Três análises estáticas estão descritas em [ENGINE-RUNS.md](rea/ENGINE-RUNS.md):
+1. API da referência Desktop: 434 nós AST, 28 findings e zero falhas de parsing.
+2. Três módulos centrais do runtime compilado: 4.468 nós AST, 41 findings e zero falhas de parsing.
+3. Console e landing compiladas: 197.684 nós AST, 299 findings e zero falhas de parsing.
 
-As seleções são parciais e anteriores às últimas correções de concorrência/health/ícone. Os patches finais têm testes próprios. Findings não significam vulnerabilidades;análise estática não comprova execução. Summaries canónicos estão em rea/evidence;arquivos completos comprimidos ficaram guardados localmente e a publicação desses arquivos foi interrompida pela desconexão.
+As seleções são parciais; há fontes não selecionadas e limites semânticos explícitos. As análises dos artefactos precedem os últimos patches de concorrência/health/ícone; esses patches têm verificação de testes e CI. Findings não equivalem a vulnerabilidades e análise estática não comprova execução.
 
-Ruflo respondeu à versão,mas não houve swarm operacional. O trabalho paralelo real utilizou agentes com instruções do catálogo Agency Agents. Não afirmar o contrário.
+Os summaries canónicos estão publicados em rea/evidence. Os relatórios completos comprimidos permanecem no workspace Windows; a transferência desses arquivos foi interrompida pela desconexão do ambiente.
 
-## O que impede declarar100%concluído
-1.Conferir o resultado final cargo test do CI acima e corrigir qualquer falha restante.
-2.Homologação visual e funcional real Galaxy/Command/CRM no navegador/aplicação. O navegador integrado falhou;CUA interrompeu o acesso Chrome porque não conseguiu determinar o URL com segurança. Não houve inspeção visual certificada.
-3.O computador voltou a ficar indisponível durante o envio das evidências completas. Precisa permanecer acordado,com aplicação ligada e navegador acessível para a inspeção.
-4.Paridade exaustiva Rust/TypeScript,gbrain híbrido completo,entrega Telegram/WhatsApp,modelo real configurado,instalador assinado e domínio publicado não estão homologados. O código informa ausências de configuração;nenhuma resposta de modelo fictícia foi promovida a resultado real.
+Ruflo respondeu à versão, mas não houve swarm Ruflo operacional. O trabalho paralelo efetivo utilizou agentes com instruções do catálogo Agency Agents.
 
-## Continuidade
-Os quatro repositórios estão em sergiomonteiro-atlas. Publicações via ligação GitHub autorizada,preservando história e sem force push;Git do terminal não possui credenciais para push. Os checkouts locais ainda precisam ser reconciliados com os commits API sem descartar alterações. Referências,logs,provas completas e scripts de apoio estão em C:/Users/conta/Documents/GWD_GENESIS/_rea_sources e atlas-blueprint/rea.
+## O que falta para homologação integral
+1. Inspeção visual e funcional da Galaxy, Command, CRM e landing numa sessão controlável.
+2. Teste da aplicação nativa aberta, incluindo gravação do CRM e leitura do Vault através do IPC.
+3. Publicação dos arquivos completos de evidência e reconciliação dos checkouts locais com os commits remotos, sem descartar alterações.
 
-Não são necessárias novas credenciais para concluir compilação,testes e inspeção desta fase. Credenciais de modelos,canais,assinatura e deploy só são necessárias para ativar essas capacidades operacionais separadamente.
+O navegador integrado falhou e o controlo do Chrome foi interrompido porque não conseguiu determinar o URL com segurança. O ambiente local voltou a desligar durante a transferência das evidências. Não houve validação visual certificada. Os servidores temporários de QA foram encerrados para libertar memória.
 
-VPS AtlasHub e Helena não foram alteradas.
+Para concluir estes pontos, é necessária uma ligação estável ao computador e um navegador com janela e URL identificáveis pelo controlo autorizado. Não são necessárias credenciais novas para a compilação e a inspeção desta fase.
 
-## Última correção de catálogo nativo
-O segundo CI passou 298 testes e detetou uma única falha: 15 cópias antigas achatadas coexistiam com os agentes canónicos nas pastas de desenvolvimento de jogos. A comparação das árvores GitHub identificou exatamente os 288 agentes do Workforce; só as 15 cópias ausentes dessa árvore foram removidas do bundle. A asserção de ausência de ficheiros ignorados foi mantida. Commit Desktop atual: d2eb333307aacc3f495b83d6d677d0b369a448f7. O novo CI está a executar cargo check/test; npm ci/check/test/build já passaram.
+## Limites operacionais
+Paridade exaustiva dos parsers Rust/TypeScript, gbrain híbrido completo, modelos reais, entrega Telegram/WhatsApp, instalador assinado e domínio publicado não foram homologados. A landing existe em código; agents.atlas-si.com não foi colocado online nesta execução. Essas ativações exigem configuração e credenciais próprias quando aplicável. Não houve respostas fictícias de modelo apresentadas como trabalho real.
 
-Para finalizar a homologação, basta uma ligação estável ao computador e um navegador cuja janela e URL possam ser identificados pelo controlo autorizado. Não foi pedido nenhum acesso novo à VPS, nem credenciais adicionais para esta fase.
+As publicações foram feitas pela ligação GitHub autorizada, preservando o histórico e sem force push. O Git do terminal não tem credenciais para push; não afirmar que esse comando local foi executado com sucesso. Os checkouts locais precisam incorporar os commits remotos posteriores, incluindo a remoção das cópias antigas do bundle.
+
+Os ficheiros locais estão em C:/Users/conta/Documents/GWD_GENESIS. Referências e logs estão em _rea_sources; provas completas em atlas-blueprint/rea/evidence.
+
+A VPS AtlasHub e a Helena não foram alteradas.
