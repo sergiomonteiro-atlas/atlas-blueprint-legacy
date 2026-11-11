@@ -8,9 +8,9 @@ Data:11/11/2026. **Quatro repositórios publicados; falta fechar a homologação
 | atlas-blueprint | Especificações,schemas,registo de fontes,auditoria,evidência REA e este briefing | Cinco testes de contratos passaram; CI anterior verde |
 | atlas-workforce | 288 agentes,19 divisões,19 ferramentas,AtlasHub5,Souls,Vault com três leads fictícios | Quinze testes;seis pipelines remotos verdes no commit b1edbbfae63e3ddbb34064eafe6b65594b0d21ab;5472 conversões geradas |
 | atlas-agent | Harness Builder/Auditor,CLI,identidades,indexador lexical/embeddings opcionais,gateway,HTTP/WS | Onze testes passaram sem skips;CI verde em27f868cd404ffd42349fb036ebe45522874824df |
-| atlas-desktop | Tauri2/Svelte5,Galaxy3D,Command3D,Vault,CRM,landing /atlas | Candidato73fabc44038ce6fd1bddf46d0b0c28976aa5d028:npm ci/check/test/build e cargo check verdes;cargo test ainda em execução |
+| atlas-desktop | Tauri2/Svelte5,Galaxy3D,Command3D,Vault,CRM,landing /atlas | Candidatod2eb333307aacc3f495b83d6d677d0b369a448f7:npm ci/check/test/build e cargo check verdes;cargo test ainda em execução |
 
-CI Desktop:[run43070846595](https://github.com/sergiomonteiro-atlas/atlas-desktop/actions/runs/43070846595).
+CI Desktop:[run43072216973](https://github.com/sergiomonteiro-atlas/atlas-desktop/actions/runs/43072216973).
 
 ## O que foi corrigido nesta continuação
 - Publicados todos os637ficheiros iniciais do Desktop,incluindo87recursos binários.
@@ -45,3 +45,8 @@ Os quatro repositórios estão em sergiomonteiro-atlas. Publicações via ligaç
 Não são necessárias novas credenciais para concluir compilação,testes e inspeção desta fase. Credenciais de modelos,canais,assinatura e deploy só são necessárias para ativar essas capacidades operacionais separadamente.
 
 VPS AtlasHub e Helena não foram alteradas.
+
+## Última correção de catálogo nativo
+O segundo CI passou 298 testes e detetou uma única falha: 15 cópias antigas achatadas coexistiam com os agentes canónicos nas pastas de desenvolvimento de jogos. A comparação das árvores GitHub identificou exatamente os 288 agentes do Workforce; só as 15 cópias ausentes dessa árvore foram removidas do bundle. A asserção de ausência de ficheiros ignorados foi mantida. Commit Desktop atual: d2eb333307aacc3f495b83d6d677d0b369a448f7. O novo CI está a executar cargo check/test; npm ci/check/test/build já passaram.
+
+Para finalizar a homologação, basta uma ligação estável ao computador e um navegador cuja janela e URL possam ser identificados pelo controlo autorizado. Não foi pedido nenhum acesso novo à VPS, nem credenciais adicionais para esta fase.
