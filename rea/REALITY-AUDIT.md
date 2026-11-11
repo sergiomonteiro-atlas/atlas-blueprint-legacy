@@ -60,4 +60,4 @@ Final CI candidate:Desktop73fabc44038ce6fd1bddf46d0b0c28976aa5d028 passed npm ci
 
 
 ## Final hosted CI result
-Desktop commit d2eb333307aacc3f495b83d6d677d0b369a448f7 passed npm ci, npm run check, npm test, npm run build, cargo check and cargo test in run43072216973. The native suite retains one pre-existing ignored upstream byte-parity test; it was not reclassified as passing. The final duplicate bundle issue was corrected by exact comparison with the Workforce tree. Browser/native visual validation remains blocked and is not certified.
+Desktop commit d2eb333307aacc3f495b83d6d677d0b369a448f7 passed npm ci, npm run check, npm test, npm run build, cargo check and cargo test in run43072216973. The final native log reports 299 passed and zero failed unit tests, one inherited ignored byte-parity test, and a separate integration group with six ignored tests. These seven ignored tests were not reclassified as passing. The final duplicate bundle issue was corrected by exact comparison with the Workforce tree. Browser/native visual validation remains blocked and is not certified.
