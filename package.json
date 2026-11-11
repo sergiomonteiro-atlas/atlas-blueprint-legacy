@@ -5,6 +5,13 @@
   "type": "module",
   "description": "Atlas-Agent OS architecture and executable contract checks",
   "license": "MIT",
-  "scripts": {"check": "node --test tests/*.test.mjs", "test": "node --test tests/*.test.mjs"},
-  "devDependencies": {"ajv": "8.17.1", "ajv-formats": "3.0.1"}
+  "scripts": {
+    "check": "node --test tests/*.test.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "integration": "node scripts/verify-ecosystem.mjs"
+  },
+  "devDependencies": {
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1"
+  }
 }
