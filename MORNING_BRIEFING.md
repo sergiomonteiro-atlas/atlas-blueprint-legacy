@@ -51,3 +51,10 @@ Foi utilizado trabalho paralelo com instruções reais dos especialistas Agency 
 7. Reconciliar os checkouts locais com os commits remotos sem descartar ficheiros e atualizar este briefing com os resultados finais.
 
 A VPS AtlasHub e a Helena não foram alteradas nesta execução.
+
+## Atualização final desta sessão
+- Workforce: referência regenerada e publicada em 18bf0286f5eca356e90cf843c65ba92815483397. O teste estrito de conversões passou 32 verificações, sem falhas.
+- Os quinze testes do catálogo também passaram no CI remoto. As verificações de formatos, segurança de instalação, seleções completas, fences e limpeza de falhas paralelas passaram.
+- O passo CLI revelou ausência de ajuda no stderr para opção inválida. Correção publicada em 04fef9b76e3c821daa56fd3ebdd859e7d6d6025d; consultar o CI desse commit antes de declarar o pipeline completo verde.
+- A leitura local recuperou brevemente e confirmou a lista de 637 ficheiros do Desktop, mas o transporte Node fechou e o ambiente voltou a ser declarado indisponível. Nenhum commit com o código Desktop foi publicado. Não existe compilação nativa aprovada.
+- O checkout local do Workforce ainda precisa incorporar os commits remotos de baseline, workflows e ajuda CLI. Preservar alterações locais ao reconciliar.
